@@ -4,8 +4,10 @@ interface IHomeProps {}
 
 function HomePage({  }: IHomeProps) {
   return (
-    <Layout seoTitle="Kundelik App" seoDescription="Make your life easy with Kundelik App">
-
+    <Layout seoTitle="Bilim Saaty" seoDescription="Make your life easy with Kundelik App">
+      <div className="w-[70%] flex-col mx-auto flex p-8">
+        
+      </div>
     </Layout>
   )
 }
