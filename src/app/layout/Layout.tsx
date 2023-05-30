@@ -11,8 +11,10 @@ interface ILayoutProps {
 function Layout({ seoTitle, seoDescription, children }: ILayoutProps) {
   const theme = useSelector((state: any) => state.theme)
 
+  console.log(theme.value)
+
   return (
-    <div className={theme === "dark" ? "dark" : ""}>
+    <div className={theme.value === "dark" ? "dark" : ""}>
       <Head>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
