@@ -10,10 +10,10 @@ function Navbar() {
   const theme = useSelector((state: any) => state.theme);
   const dispatch = useDispatch();
 
+  let token = null;
+
   const toggleThemeHandler = () => {
-    theme === "dark"
-      ? dispatch(toggleTheme("light"))
-      : dispatch(toggleTheme("dark"));
+    theme.value === "dark" ? dispatch(toggleTheme("light")) : dispatch(toggleTheme("dark"));
   };
 
   return (
@@ -26,7 +26,7 @@ function Navbar() {
             onClick={toggleThemeHandler}
           >
             <BsFillSunFill
-              color={theme === "dark" ? "white" : "black"}
+              color={theme.value === "dark" ? "white" : "black"}
               size={26}
             />
           </div>
@@ -36,19 +36,26 @@ function Navbar() {
             className="cursor-pointer p-1.5 rounded-sm dark:hover:bg-slate-600 hover:bg-slate-300"
           >
             <AiFillGithub
-              color={theme === "dark" ? "white" : "black"}
+              color={theme.value === "dark" ? "white" : "black"}
               size={26}
             />
           </a>
         </div>
       </div>
       <div className="flex w-[30%] justify-end items-center">
-        <div className="cursor-pointer p-1.5 rounded-sm dark:hover:bg-slate-600 hover:bg-slate-300">
-          <FaUserCircle
-            color={theme === "dark" ? "white" : "black"}
-            size={30}
-          />
-        </div>
+        {token && (
+          <div className="cursor-pointer p-1.5 rounded-sm dark:hover:bg-slate-600 hover:bg-slate-300">
+            <FaUserCircle
+              color={theme.value === "dark" ? "white" : "black"}
+              size={30}
+            />
+          </div>
+        )}
+        {!token && (
+          <Link href="/auth/sign-in" className="text-md lg:text-xl cursor-pointer p-1.5 rounded-sm dark:hover:bg-slate-600 hover:bg-slate-300">
+              Войти
+          </Link>
+        )}
       </div>
     </div>
   );
